@@ -8,9 +8,9 @@ public class Lucky {
     static int x = 0;
     static AtomicInteger count = new AtomicInteger(0);
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         ThreadPoolExecutor executor = new ThreadPoolExecutor(threadsNumber, threadsNumber,
-                1, TimeUnit.SECONDS, new LinkedBlockingQueue<>(threadsNumber));
+                1, TimeUnit.SECONDS, new LinkedBlockingQueue(threadsNumber));
 
         AtomicInteger inProgress = new AtomicInteger(0);
         long begin = System.nanoTime();
