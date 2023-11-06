@@ -1,6 +1,3 @@
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Lucky {
@@ -12,6 +9,9 @@ public class Lucky {
         public void run() {
             while (x.get() < 999999) {
                 int value = x.incrementAndGet();
+                if (value > 999999) {
+                    return;
+                }
                 if ((value % 10) + (value / 10) % 10 + (value / 100) % 10 == (value / 1000)
                         % 10 + (value / 10000) % 10 + (value / 100000) % 10) {
                     System.out.println(value);
